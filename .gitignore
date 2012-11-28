@@ -1,12 +1,14 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
+#java specific
+*.class
 
-# Compiled Dynamic libraries
-*.so
+#netbeans ignore personal stuff 
+nbproject/private/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
