@@ -1,5 +1,6 @@
 public interface PrefixSearchable {
 	
-	public String[] findSubstrings(String[] prefix);
+	public String[] findSubstrings(String prefix);
+	public void precompile(String parent);
 	
 }
