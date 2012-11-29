@@ -1,6 +1,6 @@
 public class ArraySearcher implements PrefixSearchable{
 	
-	public String[] findSubstrings(String[] prefix){
+	public String[] findSubstrings(String prefix){
 		// TODO Use precompiled parent to search out substrings
 		
 		return null;
