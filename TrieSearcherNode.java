@@ -1,3 +1,5 @@
+package PrefixSearch;
+
 public class TrieSearcherNode {
 	
 	public char key;

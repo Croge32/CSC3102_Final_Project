@@ -4,7 +4,9 @@ public abstract class ArraySearcher implements PrefixSearchable{
 
 private String[] substrings;
 
-    public String[] findSubstrings(String prefix){
+    public String[] findSubstrings(String prefix){      
+        
+        
         return null;
     }
 
