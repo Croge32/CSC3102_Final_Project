@@ -11,16 +11,13 @@ public class TrieSearcherNode {
 		this.key = c;
 	}
 	
+	public int compareTo(TrieSearcherNode node){
+		return (int)this.key - (int)node.key;
+	}
+	
 	public void add(char character){
-		// Empty Array Case
-		if (this.nodes == null){
-			this.nodes = new TrieSearcherNode[1];
-			this.nodes[0] = new TrieSearcherNode(character);
-		
-		// Existing Array Case
-		} else {
-			// TODO Add node to existing nodes array
-		}
+		TrieSearcherNode newNode = new TrieSearcherNode(character);
+		add(newNode);
 	}
 	
 	public void add(String string){
