@@ -13,5 +13,5 @@ private String[] substrings;
             substrings[i] = parent.substring(i);
         }
     }
-	
+    
 }
