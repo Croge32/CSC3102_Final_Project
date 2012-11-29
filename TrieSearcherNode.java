@@ -45,13 +45,12 @@ public class TrieSearcherNode implements Comparable {
         if (this.nodes == null || this.nodes.length == 0) return -1;
         
         // Binary search the node array to find the desired node
-        boolean finished = false;
         int low = 0;
         int high = this.nodes.length-1;
         while(low <= high){
             int mid = low + (high - low) / 2;
-            if (character < this.nodes[mid]) high = mid - 1;
-            else if (character > this.nodes[mid]) lo = mid + 1;
+            if (character < this.nodes[mid].key) high = mid - 1;
+            else if (character > this.nodes[mid].key) low = mid + 1;
             else return mid;
         }
         return -1;
