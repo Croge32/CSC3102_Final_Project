@@ -1,9 +1,9 @@
 package PrefixSearch;
 
 public class PrefixSearcher {
-	
-	public static void main(String[] args){
-		// TODO Handle input - output
-	}
-	
+    
+    public static void main(String[] args){
+        // TODO Handle input - output
+    }
+    
 }
