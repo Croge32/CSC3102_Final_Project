@@ -17,7 +17,7 @@ private int parentLength;
             prefixSubs[count] = substrings[index];
             count++;
         }
-        return null;
+        return prefixSubs;
     }
 
     public void precompile(String parent){
