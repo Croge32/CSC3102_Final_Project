@@ -9,7 +9,7 @@ public class TrieSearcher implements PrefixSearchable{
 	}
 	
 	public void precompile(String parent){
-		
+		// TODO Precompile parent string
 	}
 	
 }
