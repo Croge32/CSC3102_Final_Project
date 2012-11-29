@@ -1,3 +1,5 @@
+package PrefixSearch;
+
 public class TrieSearcher implements PrefixSearchable{
 	
 	public String[] findSubstrings(String prefix){
