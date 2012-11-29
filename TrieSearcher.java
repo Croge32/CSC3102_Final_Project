@@ -2,6 +2,8 @@ package PrefixSearch;
 
 public class TrieSearcher implements PrefixSearchable{
     
+    TrieSearcherNode rootNode;
+    
     public String[] findSubstrings(String prefix){
         // TODO Use precompiled parent to search out substrings
         
@@ -9,7 +11,10 @@ public class TrieSearcher implements PrefixSearchable{
     }
     
     public void precompile(String parent){
-        // TODO Precompile parent string
+        rootNode = new TrieSearcherNode();
+        for(int i = 0; i < parent.length(); i++){
+            rootNode.add(parent.substring(i));
+        }
     }
     
 }

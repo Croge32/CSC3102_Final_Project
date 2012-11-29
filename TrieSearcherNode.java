@@ -1,6 +1,6 @@
 package PrefixSearch;
 
-public class TrieSearcherNode {
+public class TrieSearcherNode implements Comparable {
     
     public char key;
     public TrieSearcherNode[] nodes;
@@ -13,7 +13,8 @@ public class TrieSearcherNode {
         this.key = c;
     }
     
-    public int compareTo(TrieSearcherNode node){
+    public int compareTo(Object n){
+        TrieSearcherNode node = (TrieSearcherNode)n;
         return (int)this.key - (int)node.key;
     }
     
@@ -25,7 +26,7 @@ public class TrieSearcherNode {
     public void add(String string){
         if (string.length() <= 0) throw new IllegalArgumentException("Cannot Add Empty String");
         TrieSearcherNode newNode = new TrieSearcherNode(string.charAt(0));
-        if (string.length() < 1) newNode.add(string.substring(1, string.length()-1));
+        if (string.length() > 1) newNode.add(string.substring(1, string.length()-1));
         add(newNode);
     }
     
