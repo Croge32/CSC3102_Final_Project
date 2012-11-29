@@ -5,10 +5,18 @@ import java.util.Arrays;
 public class ArraySearcher implements PrefixSearchable{
 
 private String[] substrings;
+private String[] prefixSubs;
+private String p;
 private int parentLength;
 
     public String[] findSubstrings(String prefix){ 
-        
+        precompile(p);
+        int count = 0;
+        int index = binarySearch(substrings, prefix);
+        if (prefix.compareTo(substrings[index].substring(0, prefix.length()-1))==0){
+            prefixSubs[count] = substrings[index];
+            count++;
+        }
         return null;
     }
 
