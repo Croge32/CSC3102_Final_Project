@@ -1,5 +1,7 @@
 package PrefixSearch;
 
+import java.util.Arrays;
+
 public class TrieSearcherNode implements Comparable {
     
     private boolean testOutput = false;
@@ -9,9 +11,13 @@ public class TrieSearcherNode implements Comparable {
     public static void main(String[] args){
         TrieSearcherNode testNode = new TrieSearcherNode();
         TrieSearcherNode otherNode = new TrieSearcherNode('a');
+        System.out.println("Adding node");
         testNode.add(otherNode);
+        System.out.println("Adding char");
         testNode.add('b');
+        System.out.println("Adding String");
         testNode.add("string");
+        testNode.add("strangle");
         System.out.println(testNode);
     }
     
@@ -51,13 +57,21 @@ public class TrieSearcherNode implements Comparable {
         
         // Add a new node
         int nodeIndex = search(node.key);
+        System.out.println("Search Results: " + nodeIndex);
         // Add nonexistent node
-        if (nodeIndex >= 0){
-            // TODO Add nonexistant node
+        if (nodeIndex < 0){
+            System.out.println("Adding node with key " + node.key);
+            TrieSearcherNode[] newNodeArray = Arrays.copyOf(this.nodes, this.nodes.length+1);
+            newNodeArray[newNodeArray.length-1] = node;
+            Arrays.sort(newNodeArray);
+            this.nodes = newNodeArray;
         }
         // Expand on existing node
         else {
-            // TODO Add existing node
+            TrieSearcherNode parentNode = this.nodes[nodeIndex];
+            for(int i = 0; node.nodes != null && i < node.nodes.length; i++){
+                parentNode.add(node.nodes[i]);
+            }
         }
     }
     
@@ -84,8 +98,8 @@ public class TrieSearcherNode implements Comparable {
         int high = this.nodes.length-1;
         while(low <= high){
             int mid = low + (high - low) / 2;
-            if (character < this.nodes[mid].key) high = mid - 1;
-            else if (character > this.nodes[mid].key) low = mid + 1;
+            if ((int)character < (int)this.nodes[mid].key) high = mid - 1;
+            else if ((int)character > (int)this.nodes[mid].key) low = mid + 1;
             else return mid;
         }
         return -1;
