@@ -13,9 +13,24 @@ private int parentLength;
         precompile(p);
         int count = 0;
         int index = binarySearch(substrings, prefix);
-        if (prefix.compareTo(substrings[index].substring(0, prefix.length()-1))==0){
+        int reset = index;
+        while (prefix.compareTo(substrings[index].substring(0, prefix.length()-1))==0){
+            index--;
+            if(prefix.compareTo(substrings[index].substring(0, prefix.length()-1))<0){
+                for (int i=index; i<=reset; i++){
+                    prefixSubs[count] = substrings[index];
+                    count++;
+                }
+                index = reset;
+            }
             prefixSubs[count] = substrings[index];
-            count++;
+            index++;
+            if(prefix.compareTo(substrings[index].substring(0, prefix.length()-1))>0){
+                count++;
+                for (int i=reset; i<=index; i++){
+                    prefixSubs[count] = substrings[index];
+                }
+            }
         }
         return prefixSubs;
     }
