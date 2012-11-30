@@ -11,6 +11,7 @@ public class PrefixSearcher {
         for(int i=0; i<sArray.length; i++){
             System.out.println(sArray[i]);
         }
+        System.out.println(a.binarySearch(sArray, s));
     }
     
 }

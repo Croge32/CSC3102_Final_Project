@@ -51,21 +51,10 @@ private int parentLength;
         while(low <= high)
         {
             int mid = low + (high - low) / 2;
-            if (key.compareTo(s[mid]) == -1) {high = mid - 1;}
-            else if (key.compareTo(s[mid]) == 1) {low = mid + 1;}
+            if (key.compareTo(s[mid])<0) {high = mid - 1;}
+            else if (key.compareTo(s[mid])>0) {low = mid + 1;}
             else return mid;
         }
         return -1;
-    }
-    
-    public static void main(String[] args){
-        ArraySearcher a = new ArraySearcher();
-        String s = "string";
-        String[] sArray = new String[s.length()];
-        a.precompile(s);
-        sArray = a.substrings;
-        for(int i=0; i<sArray.length; i++){
-            System.out.println(sArray[i]);
-        }
     }
 }
