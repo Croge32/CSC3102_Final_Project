@@ -2,8 +2,18 @@ package PrefixSearch;
 
 public class TrieSearcherNode implements Comparable {
     
+    private boolean testOutput = false;
     public char key;
     public TrieSearcherNode[] nodes;
+    
+    public static void main(String[] args){
+        TrieSearcherNode testNode = new TrieSearcherNode();
+        TrieSearcherNode otherNode = new TrieSearcherNode('a');
+        testNode.add(otherNode);
+        testNode.add('b');
+        testNode.add("string");
+        System.out.println(testNode);
+    }
     
     public TrieSearcherNode(){
         this.key = (char)0;
@@ -24,14 +34,31 @@ public class TrieSearcherNode implements Comparable {
     }
     
     public void add(String string){
+        System.out.println(string.length() + " " + string);
         if (string.length() <= 0) throw new IllegalArgumentException("Cannot Add Empty String");
         TrieSearcherNode newNode = new TrieSearcherNode(string.charAt(0));
-        if (string.length() > 1) newNode.add(string.substring(1, string.length()-1));
+        if (string.length() > 1) newNode.add(string.substring(1, string.length()));
         add(newNode);
     }
     
     public void add(TrieSearcherNode node){
-        // TODO Add new node
+        // Add first node
+        if (this.nodes == null){
+            this.nodes = new TrieSearcherNode[1];
+            this.nodes[0] = node;
+            return;
+        }
+        
+        // Add a new node
+        int nodeIndex = search(node.key);
+        // Add nonexistent node
+        if (nodeIndex >= 0){
+            // TODO Add nonexistant node
+        }
+        // Expand on existing node
+        else {
+            // TODO Add existing node
+        }
     }
     
     public String[] getSubstrings(){
@@ -40,7 +67,15 @@ public class TrieSearcherNode implements Comparable {
         return null;
     }
     
-    public int search(char character){
+    public String toString(){
+        String s = "+" + this.key;
+        for (int i = 0; this.nodes != null && i < this.nodes.length; i++){
+            s = s + "\n" + this.nodes[i].toString();
+        }
+        return s;
+    }
+    
+    private int search(char character){
         // Return -1 if this node doesn't have any characters
         if (this.nodes == null || this.nodes.length == 0) return -1;
         
@@ -54,7 +89,6 @@ public class TrieSearcherNode implements Comparable {
             else return mid;
         }
         return -1;
-        
     }
     
 }
