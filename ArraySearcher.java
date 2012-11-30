@@ -7,31 +7,18 @@ public class ArraySearcher implements PrefixSearchable{
 public String[] substrings;
 private String[] prefixSubs;
 private String p;
-private int parentLength;
 
     @Override
     public String[] findSubstrings(String prefix){ 
+        
+        p = this.substrings[0];
+        substrings = new String[p.length()];
         precompile(p);
         int count = 0;
         int index = binarySearch(substrings, prefix);
         int reset = index;
-        while (prefix.compareTo(substrings[index].substring(0, prefix.length()-1))==0){
-            index--;
-            if(prefix.compareTo(substrings[index].substring(0, prefix.length()-1))<0){
-                for (int i=index; i<=reset; i++){
-                    prefixSubs[count] = substrings[index];
-                    count++;
-                }
-                index = reset;
-            }
-            prefixSubs[count] = substrings[index];
-            index++;
-            if(prefix.compareTo(substrings[index].substring(0, prefix.length()-1))>0){
-                count++;
-                for (int i=reset; i<=index; i++){
-                    prefixSubs[count] = substrings[index];
-                }
-            }
+        if (prefix.compareTo(substrings[index].substring(0, prefix.length()-1)) == 0){
+            
         }
         return prefixSubs;
     }

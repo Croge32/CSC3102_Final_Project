@@ -5,6 +5,7 @@ public class PrefixSearcher {
     public static void main(String[] args){
         ArraySearcher a = new ArraySearcher();
         String s = "string";
+        String prefix = "str";
         String[] sArray = new String[s.length()];
         a.precompile(s);
         sArray = a.substrings;
@@ -12,6 +13,9 @@ public class PrefixSearcher {
             System.out.println(sArray[i]);
         }
         System.out.println(a.binarySearch(sArray, s));
+        for(int i=0; i<sArray.length; i++){
+            a.findSubstrings(prefix);   
+        }
     }
     
 }
