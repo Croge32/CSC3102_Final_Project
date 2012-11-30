@@ -4,11 +4,12 @@ import java.util.Arrays;
 
 public class ArraySearcher implements PrefixSearchable{
 
-private String[] substrings;
+public String[] substrings;
 private String[] prefixSubs;
 private String p;
 private int parentLength;
 
+    @Override
     public String[] findSubstrings(String prefix){ 
         precompile(p);
         int count = 0;
@@ -35,7 +36,9 @@ private int parentLength;
         return prefixSubs;
     }
 
+    @Override
     public void precompile(String parent){
+        this.substrings = new String[parent.length()];
         for(int i=0; i<parent.length(); i++){
             substrings[i] = parent.substring(i);
         }
@@ -55,4 +58,14 @@ private int parentLength;
         return -1;
     }
     
+    public static void main(String[] args){
+        ArraySearcher a = new ArraySearcher();
+        String s = "string";
+        String[] sArray = new String[s.length()];
+        a.precompile(s);
+        sArray = a.substrings;
+        for(int i=0; i<sArray.length; i++){
+            System.out.println(sArray[i]);
+        }
+    }
 }
