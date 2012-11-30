@@ -76,7 +76,10 @@ public class TrieSearcherNode implements Comparable {
     }
     
     public String[] getSubstrings(){
-        // TODO Run down Trie to get array of substrings
+        // TODO Return all of the substrings from the nodes
+        if(this.nodes == null || this.nodes.length <= 0) return new String[0];
+        
+        String[] stringArray = new String[this.nodes.length];
         
         return null;
     }
